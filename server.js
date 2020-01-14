@@ -20,6 +20,7 @@ var app = express();
 
 // Use morgan logger for logging requests
 // app.use(logger("dev"));
+
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -32,15 +33,15 @@ mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true 
 
 // Routes
 
-// A GET route for scraping the echoJS website
+// A GET route for scraping The Horse website's News page
 app.get("/scrape", function(req, res) {
   // First, we grab the body of the html with axios
-  axios.get("http://www.echojs.com/").then(function(response) {
+  axios.get("http://www.thehorse.com/news").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
 
     // Now, we grab every h2 within an article tag, and do the following:
-    $("article h2").each(function(i, element) {
+    $("h2").each(function(i, element) {
       // Save an empty result object
       var result = {};
 
