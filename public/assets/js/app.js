@@ -31,8 +31,6 @@ $("#scrape").on("click", function() {
   })
 });
 
-// Click function for clearing all articles
-
 // Click function for "note" button
 $(".save-note").on("click", function() {
   var thisId = $(this).attr("data-id");
@@ -41,7 +39,6 @@ $(".save-note").on("click", function() {
       url: "/articles/" + thisId,
       data: {
         body: $("#noteText" + thisId).val()
-      //   body: $("#noteText").val()
       }
     }).then(function(data) {
         // Log the response

@@ -96,7 +96,7 @@ app.post("/saved/:id", function(req, res) {
     }).catch(function(err){ res.json(err) });
 })
 
-// Deletes specific articles from "Saved Articles" and puts them back on the homepage
+// Deletes specific articles from "Saved Articles" and returns user to the homepage
 app.post("/delete/:id", function(req, res){
     db.Article.findOneAndUpdate({"_id": req.params.id}, {"$set": {"saved": false}})
     .then(function(result){
