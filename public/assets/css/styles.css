@@ -1,9 +1,11 @@
 .jumbotron {
-  /* background-image: url("../images/newspaper.png"); */
-  background-size: cover;
-  height: 25rem;
-  background-color: #AE012E;
-}
+    background: url("../images/paolo-chiabrando-lW9gxX6rrvE-unsplash.jpg") no-repeat; 
+    background-size: cover;
+    min-height: 100px;
+    background-position: right 35% bottom 15%;;
+    padding-right:100px;
+    background-color: #AE012E;
+  }
 
 .container {
   margin-top: 5rem;
@@ -12,14 +14,25 @@
 h1 {
  font-size: 5rem !important;
  color: #ffffff;
+ text-align: left;
+ text-shadow:5px 5px #AE012E;
+ font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
 
 .lead {
   color: #ffffff;
+  text-align: left;
+  text-shadow:2px 2px #AE012E;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+#scrape {
+  background-color: #AE012E
 }
 
 .save {
   margin-top: 2%;
+  background-color: #AE012E
 }
 
 .delete {
