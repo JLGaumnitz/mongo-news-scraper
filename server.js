@@ -35,26 +35,23 @@ app.engine("handlebars", exphbs({
 app.set("view engine", "handlebars");
 
 // Connecting to the Mongo DB
-// mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHorseNews";
-
 mongoose.connect(MONGODB_URI);
 
-/*==========================
-Routes
-===========================*/
+// ***************
+// Routes
+// ***************
 
 // Shows all unsaved articles on homepage
 app.get("/", function(req, res){
     db.Article.find({"saved": false}).then(function(result){
-        // This variable allows us to use handlebars by passing the results 
-        // from the database as the value in an object
+        // This variable allows us to use handlebars by passing the results from the database as the value in an object
         var hbsObject = { articles: result };
         res.render("index",hbsObject);
     }).catch(function(err){ res.json(err) });
 });
 
-// Scrapes the artnews website for the article data
+// Scrapes The Horse's news webpage for the article data
 app.get("/scraped", function(req, res) {
     axios.get("http://www.thehorse.com/news").then(function(response) {
       var $ = cheerio.load(response.data);
@@ -104,7 +101,7 @@ app.post("/delete/:id", function(req, res){
     }).catch(function(err) { res.json(err) });
 });
 
-// Grabs a specific article by id and populates it with it's note(s)
+// Identifies a specific article by ID and populates it with its note(s)
 app.get("/articles/:id", function(req, res) {
     db.Article.findOne({"_id": req.params.id })
       .populate("notes")
@@ -143,18 +140,6 @@ app.post("/deleteNote/:id", function(req, res){
         res.json(err) 
       });
 });
-
-// Clears all articles
-// app.get("/clearall", function(req, res) {
-//     db.Article.remove({})
-//     .then(function(result) {
-//         res.json(result);
-//       })
-//       .catch(function(err) {
-//         res.json(err);
-//       });
-// })
-
 
 // Starting the server
 app.listen(PORT, function() {
