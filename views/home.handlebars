@@ -1,0 +1,36 @@
+{{!-- Home Page --}}
+
+<div class="container">
+    <div class="col-md-12 jumbotron">
+        <div class="text-center">
+           <h1 class="display-4">
+      The Horse
+      </h1>
+    <p class="lead"><strong>Review the latest news from TheHorse.com's News page.</strong></p>
+        </div>
+
+    </div>
+    <div class="col-md-12">
+        {{#if article}}
+            {{#each article}}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>{{this.title}}</h4>
+                </div>
+                <div class="panel-body">
+                    <a href={{this.link}} target="_blank">{{this.link}}</a>
+                    <br><br>
+                    <button type="button" class="btn btn-dark save" data-id={{this._id}}>Save Article</button>
+                </div>
+            </div>
+            {{/each}}
+        {{else}}
+        
+        <div class="panel panel-default">
+            <div class="panel-body">
+            <h4>There are not any new articles.</h4>
+            </div>
+         </div>
+        {{/if}}
+    </div>
+</div>

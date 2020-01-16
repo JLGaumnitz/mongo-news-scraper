@@ -7,8 +7,8 @@
     background-color: #AE012E;
   }
 
-.container {
-  margin-top: 5rem;
+body {
+    background-color: lightgrey;
 }
 
 h1 {
@@ -26,23 +26,40 @@ h1 {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
-#scrape {
-  background-color: #AE012E
-}
-
-.save {
-  margin-top: 2%;
-  background-color: #AE012E
-}
-
-.delete {
-  margin-top: 2%;
-}
-
 .addNote {
-  margin-top: 1%;
+  background-color: #AE012E;
 }
 
 .deleteNote {
-  margin-bottom: 2%;
+  display: inline-block;
 }
+
+.delete {
+  background-color: black;
+}
+
+.previousNotes {
+  display: inline-block;
+  width: 90%
+}
+
+#scrape {
+  background-color: #AE012E;
+  margin: 8px 0px;
+}
+
+.save {
+  background-color: #AE012E;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #AE012E;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
