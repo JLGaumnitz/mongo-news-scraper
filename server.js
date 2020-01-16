@@ -1,21 +1,21 @@
 // Dependencies
-var express = require("express");
-var logger = require("morgan");
-var mongoose = require("mongoose");
-var path = require("path");
+const express = require("express");
+const logger = require("morgan");
+const mongoose = require("mongoose");
+const path = require("path");
 
 // Scraping tools
-var axios = require("axios");
-var cheerio = require("cheerio");
+const axios = require("axios");
+const cheerio = require("cheerio");
 
 // Requiring all models
-var db = require("./models");
+const db = require("./models");
 
 // Initializing the port
-var PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 // Initializing Express
-var app = express();
+const app = express();
 
 // Middleware
     // Use morgan logger for logging requests
@@ -27,7 +27,7 @@ var app = express();
     app.use(express.static("public"));
 
 // Using Handlebars
-var exphbs = require("express-handlebars");
+const exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({
     defaultLayout: "main",
     partialsDir: path.join(__dirname, "/views/layouts/partials")
@@ -35,7 +35,7 @@ app.engine("handlebars", exphbs({
 app.set("view engine", "handlebars");
 
 // Connecting to the Mongo DB
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHorseNews";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHorseNews";
 mongoose.connect(MONGODB_URI);
 
 // ***************
@@ -46,7 +46,7 @@ mongoose.connect(MONGODB_URI);
 app.get("/", function(req, res){
     db.Article.find({"saved": false}).then(function(result){
         // This variable allows us to use handlebars by passing the results from the database as the value in an object
-        var hbsObject = { articles: result };
+        const hbsObject = { articles: result };
         res.render("index",hbsObject);
     }).catch(function(err){ res.json(err) });
 });
@@ -54,10 +54,10 @@ app.get("/", function(req, res){
 // Scrapes The Horse's news webpage for the article data
 app.get("/scraped", function(req, res) {
     axios.get("http://www.thehorse.com/news").then(function(response) {
-      var $ = cheerio.load(response.data);
+      const $ = cheerio.load(response.data);
 
       $("h2").each(function(i, element) {
-        var result = {};
+        const result = {};
 
         result.title = $(element).text();
     
@@ -80,7 +80,7 @@ app.get("/saved", function(req, res) {
     db.Article.find({"saved": true})
         .populate("notes")
         .then(function(result){
-        var hbsObject = { articles: result };
+        const hbsObject = { articles: result };
         res.render("saved",hbsObject);
     }).catch(function(err){ res.json(err) });
 });

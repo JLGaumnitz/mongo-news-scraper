@@ -1,6 +1,6 @@
 // Click function for "save" button
 $(".save").on("click", function() {
-  var thisId = $(this).attr("data-id");
+  const thisId = $(this).attr("data-id");
   $.ajax({
       method: "POST",
       url: "/saved/" + thisId
@@ -11,7 +11,7 @@ $(".save").on("click", function() {
 
 // Click function for "delete" (from saved) button
 $(".delete").on("click", function() {
-  var thisId = $(this).attr("data-id");
+  const thisId = $(this).attr("data-id");
   $.ajax({
       method: "POST",
       url: "/delete/" + thisId
@@ -33,7 +33,7 @@ $("#scrape").on("click", function() {
 
 // Click function for "note" button
 $(".save-note").on("click", function() {
-  var thisId = $(this).attr("data-id");
+  const thisId = $(this).attr("data-id");
   $.ajax({
       method: "POST",
       url: "/articles/" + thisId,
@@ -53,7 +53,7 @@ $(".save-note").on("click", function() {
 
 // Click function for deleting one note
 $(".deleteNote").on("click", function() {
-  var thisId = $(this).attr("data-note-id");
+  const thisId = $(this).attr("data-note-id");
   $.ajax({
       method: "POST",
       url: "/deleteNote/" + thisId,
