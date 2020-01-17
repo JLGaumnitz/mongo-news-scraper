@@ -29,18 +29,23 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  {{!-- Navbar --}}
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="http://thehorse.com" target="_blank">
-      <img src="assets/images/TH-logo-red-hiRes.jpg" width="200" height="60" margin-left="60px" alt="logo">
+      <img src="assets/images/TH-logo-red-hiRes.jpg" width="200" height="60" alt="logo">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
       aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
       <div class="navbar-nav nav-fill w-100">
-        <a class="nav-item nav-link active" href="/">Home<span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="/saved">Saved Articles</a>
+
+        <a class="nav-item nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+
+        <a class="nav-item nav-link" href="/saved">My Saved Articles</a>
+
         <button type="button" class="btn btn-dark" id="scrape">Get New Articles</button>
       </div>
     </div>
@@ -48,16 +53,10 @@
 
   {{{body}}}
 
-  <br>
-  <br>
-  <footer class="footer">
-    "The Horse" News Mongo Scraper</strong>  2020 | <a href="https://github.com/JLGaumnitz/mongo-news-scraper"
-      target="_blank"> See GitHub Repo</a>
-  </footer>
 
-  {{!-- External JS Link --}}
 </body>
 
+{{!-- External JS Link --}}
 <script src="assets/js/app.js"></script>
 
 </html>
