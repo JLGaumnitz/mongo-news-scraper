@@ -68,18 +68,6 @@ h1 {
   background-color: #AE012E;
 }
 
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #AE012E;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  border-top: solid black;
-  margin-top: 100px;
-}
 
 a { 
   color: #AE012E; 
@@ -93,10 +81,6 @@ a:visited {
   color: black;
 }
 
-#footer-link {
-  color: #ffffff;
-}
-
 .panel {
   border: dotted #AE012E;
   background-color: lightgrey;
@@ -107,7 +91,7 @@ a:visited {
   padding-top: 20px;
 }
 
-.panel-default {
+.panel-notes {
   border: none;
   background-color: #ffffff;
  }
