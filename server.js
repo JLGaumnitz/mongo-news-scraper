@@ -76,7 +76,7 @@ app.get("/scrape", function (req, res) {
 
       result.title = $(element).text();
 
-      result.link = $(element).children("a").attr("href") || 'N/A';
+      result.link = $(element).children("a").attr("href") || 'Link is not available';
 
       db.Article.create(result)
         .then(function (dbArticle) {

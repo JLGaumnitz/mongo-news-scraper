@@ -20,14 +20,14 @@
                         <a href={{this.link}} target="_blank">{{this.link}}</a>
                         <br><br>
                         <button type="button" class="btn btn-success addNote" data-toggle="modal" data-target="#noteModal{{this._id}}" data-id={{this._id}}>Add a Note</button>
-                        <button type="button" class="btn btn-danger delete" data-id={{this._id}}>Delete</button>
+                        <button type="button" class="btn btn-danger delete" data-id={{this._id}}>Remove from Saved Articles</button>
                     </div>
                 </div>
             {{/each}}
         {{else}}
         <div class="panel panel-default">
             <div class="panel-body">
-                <h4>You have not saved or made notes on any articles yet.</h4>
+                <h4>You have not saved, or made notes on, any articles yet.</h4>
             </div>
         </div>
         {{/if}}
