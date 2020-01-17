@@ -35,7 +35,7 @@ app.engine("handlebars", exphbs({
 app.set("view engine", "handlebars");
 
 // Connecting to the Mongo DB
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHorseNews";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/mongoHorseNews";
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // ***************
@@ -44,9 +44,10 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // GET request to render handlebars page
 app.get("/", function (req, res) {
-  db.Article.find({ saved: false }, function (error, data) {
+  db.Article.find({ saved: false }).lean()
+  .then(function(article) {
     var hbsObject = {
-      article: data
+      article
     };
     console.log(hbsObject);
     res.render("home", hbsObject);
@@ -54,7 +55,7 @@ app.get("/", function (req, res) {
 })
 
 app.get("/saved", function (req, res) {
-  db.Article.find({ saved: true })
+  db.Article.find({ saved: true }).lean()
     .populate("notes")
     .exec(function (error, articles) {
       var hbsObject = {
@@ -66,7 +67,8 @@ app.get("/saved", function (req, res) {
 
 // GET route to scrape The Horse's news webpage for the article data
 app.get("/scrape", function (req, res) {
-  axios.get("http://www.thehorse.com/news").then(function (response) {
+  axios.get("http://www.thehorse.com/news")
+  .then(function (response) {
     const $ = cheerio.load(response.data);
 
     $("h2").each(function (i, element) {
@@ -74,11 +76,12 @@ app.get("/scrape", function (req, res) {
 
       result.title = $(element).text();
 
-      result.link = $(element).children("a").attr("href");
+      result.link = $(element).children("a").attr("href") || 'N/A';
 
       db.Article.create(result)
         .then(function (dbArticle) {
           console.log(dbArticle);
+          res.redirect("/")
         })
         .catch(function (err) {
           console.log(err);
@@ -90,11 +93,13 @@ app.get("/scrape", function (req, res) {
 
 // This will get the articles we scraped from the mongoDB
 app.get("/articles", function (req, res) {
-  db.Article.find({})
+  db.Article.find({}).lean()
     .then(function (dbArticle) {
+      console.log('good')
       res.json(dbArticle);
     })
     .catch(function (err) {
+      console.log('bad')
       res.json(err);
     });
 });
