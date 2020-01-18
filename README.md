@@ -1,20 +1,18 @@
 # The Horse Edition of mongo news scraper
-A mobile-responsive web app that lets users view, save, and make notes on news from TheHorse.com. The app uses Mongoose, Cheerio, Express, Express-handlebars, and Axios.
+A mobile-responsive Heroku-deployed app that lets users view, save, and make notes on news from TheHorse.com. The app uses Mongoose, Cheerio, Express, Express-handlebars, and Axios.
 
 created by Jennifer Gaumnitz
 ____________
 
-A web app that lets users view, save, and make notes on news from TheHorse.com. The app uses Mongoose, Cheerio, Express, Express-handlebars, and Axios. User
-
-- - - -
-Heroku deployed app: ADD LINK
+Heroku deployed app: https://immense-island-25432.herokuapp.com/
 
 GitHub repository: https://github.com/JLGaumnitz/mongo-news-scraper
 - - - -
 
+
 ![Mongo News Scraper Start](./imagesForReadme/mongo_news_scraper_01_start.PNG)
 
-### How You Can Get Started With This Project ###
+### How You Can Get Started With This Web App ###
 
 <strong>To use the app:</strong> 
 
@@ -24,7 +22,7 @@ Click on the "Get New Articles" button at top right, which activates the scrapin
 
 ![Mongo News Scraper Start](./imagesForReadme/mongo_news_scraper_02_button_to_scrape.PNG)
 
-Then click the Home button to see the articles displayed on the Home page. 
+Then click the Home button to see the lst of articles with the title, summary, and a link displayed on the Home page. 
 
 ![Mongo News Scraper Start](./imagesForReadme/mongo_news_scraper_03_articles_scraped.PNG)
 
@@ -32,7 +30,7 @@ If you wish to save an article and make notes on it, click the "Save Article" be
 
 ![Mongo News Scraper Start](./imagesForReadme/mongo_news_scraper_04_saved_articles_start.PNG)
 
-The article is then moved from the Home page and moved to the Saved Articles page. Click on "My Saved Articles" in the navigation bar. And you will see the list with buttons for adding a note or removing it from your list of saved articles.
+The article is then moved from the Home page and moved to the Saved Articles page. Click on "My Saved Articles" in the navigation bar. You will then see the list of saved articles, each with two buttons to "Add a Note" or "Remove from Saved Articles", which do exactly what they say.
 
 ![Mongo News Scraper Start](./imagesForReadme/mongo_news_scraper_05_saved_articles_list.PNG)
 
@@ -48,12 +46,14 @@ You can delete notes by clicking the red "X" next to the note you wish to delete
 
 ![Mongo News Scraper 1 Note Deleted](./imagesForReadme/mongo_news_scraper_09_notes_modal_with_1_note_deleted.PNG)
 
-To move an article out of this list, click the button that says "Remove from Saved Articles" and it moves back to the Home page. (All notes are lost when the article is moved out of the Saved Articles list.)
+To move an article out of this list, click the button that says "Remove from Saved Articles" and the article moves back to the Home page. (All notes are lost when the article is moved out of the Saved Articles list.)
 
-"The Horse" logo at the top left is an active link that takes you to the main page of thehorse.com. The other links are red if not followed, gray on hover, and black if followed.
+<strong>A few other notes:</strong> <br>
+"The Horse" logo at the top left is an active link that takes you to the main page of thehorse.com. All of the links are red if not followed, black on hover, and navy blue if followed. 
 
+The site is mobile responsive, built with Bootstrap 4.0 and CSS with media queries.
 
-<strong>To create the app from my files in my GitHub repository:</strong> 
+### Creating the app from my files in my GitHub repository ### 
 
 To install and use this application yourself, clone the GitHub repository. 
 
@@ -68,7 +68,9 @@ You will need to have installed:
     * mongoose: 5.8.7
     * morgan: 1.9.1 
 
-Before running the server.js file using node.js, you will need to run "npm install." You will also need to have mongo installed and be running mongod.
+Before running the server.js file using node.js, you will need to run "npm install." You will also need to have mongo installed and be running mongod in the background. 
+
+To deploy to Heroku, you will need to provision an mLab remote database, using the mLab MondoDB add-on in the Heroku dashboard.
 
 Then run "node server.js" at the command line to begin the server, and then navigate to localhost:3000 in your browser to see the HTML home page and proceed from there.
 
