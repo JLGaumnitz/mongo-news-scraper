@@ -71,12 +71,14 @@ app.get("/scrape", function (req, res) {
   .then(function (response) {
     const $ = cheerio.load(response.data);
 
-    $("h2").each(function (i, element) {
+    $(".post-content").each(function (i, element) {
       const result = {};
 
-      result.title = $(element).text();
+      result.title = $(element).children("h2").text() || 'Title unavailable';
 
-      result.link = $(element).children("a").attr("href") || 'Link is not available';
+      result.link = $(element).find("a").attr("href") || 'Link unavailable';
+
+      result.summary = $(element).find('.entry-summary p').text() || 'Summary unavailable';
 
       db.Article.create(result)
         .then(function (dbArticle) {
